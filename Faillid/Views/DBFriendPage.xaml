@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Faillid.DBFriendPage">
+        <StackLayout>
+            <Label Text="Nimi"></Label>
+            <Entry Text="{Binding Name}" Placeholder="Name" />
+            <Label Text="Email"></Label>
+            <Entry Text="{Binding Email}" Placeholder="Email" />
+            <Label Text="Tel"></Label>
+            <Entry Text="{Binding Phone}" Placeholder="Phone" />
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Сохранить" Clicked="SaveFriend" />
+            <Button Text="Удалить" Clicked="DeleteFriend" />
+            <Button Text="Отмена" Clicked="Cancel" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

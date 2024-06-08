@@ -9,7 +9,7 @@
         Label editText, contentLabel;
         Frame frame;
         CarouselView carousel;
-        Button openNewPageButton;
+        Button openNewPageButton, openOneMoreNewPageButton;
         Image img;
         protected override void OnAppearing()
         {
@@ -68,7 +68,7 @@
                 };
                 img = new Image
                 {
-                    Source = "dotnet_bot.png",
+                    Source = "ez.png",
                     WidthRequest = 200,
                     HeightRequest = 200,
                 };
@@ -99,16 +99,29 @@
 
             openNewPageButton = new Button
             {
-                Text = "Redigeerimine",
+                Text = "Lisa kaart",
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             openNewPageButton.Clicked += OpenNewPageButton_Clicked;
 
+            openOneMoreNewPageButton = new Button
+            {
+                Text = "Friends",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            openOneMoreNewPageButton.Clicked += openOneMoreNewPageButton_Clicked;
+
             Content = new StackLayout
             {
-                Children = { carousel, openNewPageButton }
+                Children = { carousel, openNewPageButton, openOneMoreNewPageButton }
             };
+        }
+        private async void openOneMoreNewPageButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DBListPage());
+
         }
         private async void OpenNewPageButton_Clicked(object sender, EventArgs e)
         {

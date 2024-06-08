@@ -62,11 +62,6 @@ namespace Faillid
             listFailist.ItemsSource = list;
         }
 
-        private async void Button_Main(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
-
         private async void DeleteButton_Clicked(object sender, EventArgs e)
         {
             if (FilesList.SelectedItem != null)

@@ -2,10 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Faillid.Failide_Page"
-             Title="Failide_Page">
+             BackgroundColor="#f5f5f5">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="StyledEntry" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="HeightRequest" Value="40"/>
+            </Style>
+
+            <Style x:Key="StyledButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#007acc"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
+            <Grid Padding="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -15,13 +39,32 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Entry x:Name="fileNameEntry" Placeholder="Sisesta faili nimi" Grid.Row="0" WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Width}"/>
-                <Editor Grid.Row="1" x:Name="textEditor" FontSize="Large"/>
-                <Button Grid.Row="2" Text="Salvesta" Clicked="Button_Clicked" WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Width}"/>
-                <Button Grid.Row="3" Text="Main" Clicked="Button_Main" WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Width}" HeightRequest="50"/>
-                <Button Grid.Row="4" Text="Kustuta" Clicked="DeleteButton_Clicked" WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Width}" HeightRequest="50"/>
-                <VerticalStackLayout Grid.Row="5">
-                    <Label Text="Failide loetelu:" FontSize="Title"/>
+
+                <Entry x:Name="fileNameEntry" 
+                       Placeholder="Sisesta faili nimi" 
+                       Grid.Row="0" 
+                       Style="{StaticResource StyledEntry}" />
+
+                <Editor Grid.Row="1" 
+                        x:Name="textEditor" 
+                        FontSize="Large" 
+                        BackgroundColor="White" 
+                        TextColor="Black" 
+                        Margin="10" 
+                        HeightRequest="100"/>
+
+                <Button Grid.Row="2" 
+                        Text="Salvesta" 
+                        Clicked="Button_Clicked" 
+                        Style="{StaticResource StyledButton}" />
+
+                <Button Grid.Row="4" 
+                        Text="Kustuta" 
+                        Clicked="DeleteButton_Clicked" 
+                        Style="{StaticResource StyledButton}" />
+
+                <VerticalStackLayout Grid.Row="5" Margin="10">
+                    <Label Text="Failide loetelu:" FontSize="Title" Margin="10"/>
                     <ScrollView>
                         <ListView x:Name="FilesList" ItemSelected="FilesList_ItemSelected">
                             <ListView.ItemTemplate>
@@ -37,8 +80,8 @@
                         </ListView>
                     </ScrollView>
                 </VerticalStackLayout>
-                <VerticalStackLayout Grid.Row="6">
-                    <Label Text="Faili sisu loetelu:" FontSize="Title"/>
+
+                <VerticalStackLayout Grid.Row="6" Margin="10">
                     <ListView x:Name="listFailist">
                         <ListView.ItemTemplate>
                             <DataTemplate>
